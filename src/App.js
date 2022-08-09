@@ -3,6 +3,7 @@ import Home from './Pages/Home';
 import RecoverPassword from './Pages/RecoverPassword';
 import './App.css';
 import './Responsive.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

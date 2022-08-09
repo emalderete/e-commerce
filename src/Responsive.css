@@ -1,1 +1,35 @@
 /*----------- Diseño adaptable: Ancho -----------*/
+
+@media (max-width: 1023px) {
+    .brandContainer {
+        height: 5vw;
+        width: 21.3vw;
+    }
+    .brandText {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width: 720px) {
+    .brandContainer {
+        height: 8vw;
+        width: 29.2vw;
+    }
+    .brandText {
+        font-size: 3.2vw;
+    }
+}
+
+@media (max-width: 512px) {
+    .brandContainer {
+        height: 10vw;
+        width: 36vw;
+    }
+    .brandText {
+        font-size: 3.9vw;
+    }
+}
+
+@media (max-width: 420px) {}
+
+@media (max-width: 360px) {}

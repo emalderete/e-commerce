@@ -1,0 +1,64 @@
+/*--------- Dependencias importadas ---------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Ubuntu&display=swap');
+
+/* font-family: 'Roboto Slab', serif;
+font-family: 'Ubuntu', sans-serif; */
+
+
+/*--------- Diseños generales ---------*/
+
+body {
+    background-color: #efebe5;
+}
+
+
+/*--------- Header ---------*/
+
+.headerContainer {
+    width: 100%;
+    background: rgb(10, 148, 136);
+    background: linear-gradient(126deg, rgba(10, 148, 136, 1) 60%, rgba(7, 159, 146, 1) 61%, rgba(14, 173, 159, 1) 67%, rgba(10, 148, 136, 1) 68%, rgba(10, 148, 136, 1) 71%, rgba(14, 173, 159, 1) 72%, rgba(20, 196, 181, 1) 75%, rgba(10, 148, 136, 1) 76%);
+}
+
+.header {
+    padding: 4vh 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brandContainer {
+    border: 1px solid blue;
+    height: 4.1vw;
+    width: 17.7vw;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    height: inherit;
+}
+
+.brandText {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.08vw;
+    color: #ff7e73;
+}
+
+.sesion {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+}
+
+.loginButton {
+    border: none;
+    background-color: #00000000;
+    color: #ffffff;
+}
+
+.registerButton {
+    border: none;
+    background-color: #00000000;
+    color: #ffffff;
+}
