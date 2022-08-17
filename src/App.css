@@ -13,23 +13,35 @@ body {
 }
 
 
+/*--------- Efectos ---------*/
+
+.inputHidden {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
 /*--------- Header ---------*/
 
 .headerContainer {
     width: 100%;
-    background: rgb(10, 148, 136);
-    background: linear-gradient(126deg, rgba(10, 148, 136, 1) 60%, rgba(7, 159, 146, 1) 61%, rgba(14, 173, 159, 1) 67%, rgba(10, 148, 136, 1) 68%, rgba(10, 148, 136, 1) 71%, rgba(14, 173, 159, 1) 72%, rgba(20, 196, 181, 1) 75%, rgba(10, 148, 136, 1) 76%);
+    background: #8E0E00;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1F1C18, #8E0E00);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1F1C18, #8E0E00);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .header {
-    padding: 4vh 4vw;
+    padding: 2rem 4vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .brandContainer {
-    border: 1px solid blue;
     height: 4.1vw;
     width: 17.7vw;
     display: flex;
@@ -61,4 +73,40 @@ body {
     border: none;
     background-color: #00000000;
     color: #ffffff;
+}
+
+.search {
+    display: flex;
+}
+
+.buttonSearch,
+.inputButtonTrigger {
+    border: none;
+    background: none;
+    color: #ffffff;
+    margin-right: 2rem;
+}
+
+.inputSearch {
+    background: #66666667;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+    outline: none;
+    border-radius: 3px;
+}
+
+
+/*-------------- Login --------------*/
+
+.modalContainer {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: #000000a1;
+    z-index: 1;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
