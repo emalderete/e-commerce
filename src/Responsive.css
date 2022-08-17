@@ -18,6 +18,15 @@
     .brandText {
         font-size: 3.2vw;
     }
+    .search {
+        display: none;
+    }
+    .sesion {
+        display: none;
+    }
+    .barsButtonContainer {
+        display: contents;
+    }
 }
 
 @media (max-width: 512px) {

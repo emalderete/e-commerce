@@ -22,6 +22,9 @@ body {
 }
 
 
+/*------------ Diseño de escritorio -------------*/
+
+
 /*--------- Header ---------*/
 
 .headerContainer {
@@ -96,17 +99,34 @@ body {
     border-radius: 3px;
 }
 
+.social {
+    font-size: 150%;
+    margin-left: 3rem;
+}
+
+.icons {
+    color: #ffffff;
+    margin: 0 0.5rem;
+    transition: 200ms;
+}
+
+.icons:hover {
+    color: #e97995;
+}
+
+
+/*--------- Diseño para móviles ---------*/
+
+.barsButtonContainer {
+    display: none;
+}
+
+.barsButton {
+    background-color: #00000000;
+    border: none;
+    color: #efebe5;
+    font-size: 200%;
+}
+
 
 /*-------------- Login --------------*/
-
-.modalContainer {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    background-color: #000000a1;
-    z-index: 1;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
