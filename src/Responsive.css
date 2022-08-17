@@ -40,6 +40,10 @@
     .social {
         display: none;
     }
+    .overlayMobileContainer {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 @media (max-width: 512px) {

@@ -138,6 +138,8 @@ body {
     padding: 1rem;
     top: 0;
     transition: 450ms;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .overlayHidden {
