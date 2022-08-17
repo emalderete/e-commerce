@@ -8,6 +8,16 @@
     .brandText {
         font-size: 2.5vw;
     }
+    .social {
+        font-size: 100%;
+    }
+    .sesion {
+        font-size: 85%;
+    }
+    .buttonSearch,
+    .inputButtonTrigger {
+        margin-right: 0.5rem;
+    }
 }
 
 @media (max-width: 720px) {
@@ -26,6 +36,9 @@
     }
     .barsButtonContainer {
         display: contents;
+    }
+    .social {
+        display: none;
     }
 }
 

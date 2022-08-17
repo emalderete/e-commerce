@@ -97,6 +97,7 @@ body {
     color: #ffffff;
     outline: none;
     border-radius: 3px;
+    width: 17vw;
 }
 
 .social {
@@ -128,5 +129,54 @@ body {
     font-size: 200%;
 }
 
+.overlayMobileContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background-color: #1F1C18;
+    padding: 1rem;
+    top: 0;
+    transition: 450ms;
+}
+
+.overlayHidden {
+    transform: translateY(-100%);
+}
+
+.headerOverlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0.5rem;
+}
+
+.mobileSesion {
+    font-size: 80%;
+    display: flex;
+}
+
+.mobileSearch {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.mobileButtonSearch {
+    background-color: #00000000;
+    color: #ffffff;
+    border: none;
+    padding-left: 8px;
+}
+
 
 /*-------------- Login --------------*/
+
+.modalLoginContainer {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: #00000080;
+}

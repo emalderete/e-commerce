@@ -3,10 +3,16 @@ import Brand from '../../Img/brand.svg';
 
 const Header = () => {
     const [inputSearchShow, setInputSearchShow] = useState(false);
+    const [overlayMobile, setOverlayMobile] = useState(false);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
     }
+
+    function overlayMobileHandler(){
+        overlayMobile ? setOverlayMobile(false) : setOverlayMobile(true);
+    }
+
     return (
         <div>
             <div className='headerContainer'>
@@ -19,7 +25,7 @@ const Header = () => {
                         <div className='search'>
                             <button className={inputSearchShow ? 'inputHidden inputButtonTrigger' : 'inputButtonTrigger'} type='button' onClick={searchInputHandler}><i className='fa-solid fa-magnifying-glass'></i></button>
                             <form className={inputSearchShow ? 'formSerach' : 'inputHidden formSearch'}>
-                                <input className='inputSearch' type='text' placeholder='Buscar...'></input>
+                                <input className='inputSearch' type='text' placeholder='Buscar...'/>
                                 <button className='buttonSearch' id='' type='submit'><i className='fa-solid fa-magnifying-glass'></i></button>
                             </form>
                         </div>
@@ -41,9 +47,31 @@ const Header = () => {
                         </div>
                     </div>
                     <div className='barsButtonContainer'>
-                        <button className='barsButton' type='button'><i className='fa-solid fa-bars'></i></button>
+                        <button className='barsButton' type='button' onClick={overlayMobileHandler}><i className='fa-solid fa-bars'></i></button>
                     </div>
                 </div>
+                <div className={overlayMobile ? 'overlayMobileContainer' : 'overlayMobileContainer overlayHidden'}>
+                    <div className='headerOverlay'>
+                        <div className='mobileSesion'>
+                            <button className='loginButton' type='button'>Iniciar Sesion</button>
+                            <div style={{margin: '0 2vw', width: '0.2rem', height: '2rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
+                            <button className='registerButton' type='button'>Registrarse</button>
+                        </div>
+                        <button className='btn-close btn-close-white' type='button' onClick={overlayMobileHandler}></button>
+                    </div>
+                    <form className='mobileSearch'>
+                        <input style={{width: '80%'}} className='inputSearch' type='text' placeholder='Buscar...'/>
+                        <button className='mobileButtonSearch' type='submit'><i className='fa-solid fa-magnifying-glass'></i></button>
+                    </form>
+                </div>
+                {/* <div className='modalLoginContainer'>
+                    <div className='modalLogin'>
+                        <div className='modalLoginHeader'>
+                            <button className='btn-close'></button>
+                        </div>
+                        <div className='modalLoginBody'></div>
+                    </div>
+                </div> */}
             </div>
         </div>
     );
