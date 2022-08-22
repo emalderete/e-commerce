@@ -44,6 +44,10 @@
         opacity: 1;
         pointer-events: all;
     }
+    .navbar {
+        margin-left: 2rem;
+        margin-right: 1rem;
+    }
 }
 
 @media (max-width: 512px) {
@@ -54,8 +58,18 @@
     .brandText {
         font-size: 3.9vw;
     }
+    .navbar {
+        margin-left: 2rem;
+        margin-right: 1rem;
+        font-size: 80%;
+    }
 }
 
-@media (max-width: 420px) {}
+@media (max-width: 420px) {
+    .navbar {
+        margin-right: 0.5rem;
+        margin-left: 2.5rem;
+    }
+}
 
 @media (max-width: 360px) {}

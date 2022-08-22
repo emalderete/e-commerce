@@ -64,14 +64,16 @@ const Header = () => {
                         <button className='mobileButtonSearch' type='submit'><i className='fa-solid fa-magnifying-glass'></i></button>
                     </form>
                 </div>
-                {/* <div className='modalLoginContainer'>
+                <div className='modalLoginContainer'>
                     <div className='modalLogin'>
                         <div className='modalLoginHeader'>
-                            <button className='btn-close'></button>
+                            <button className='btn-close btn-close-white'></button>
                         </div>
-                        <div className='modalLoginBody'></div>
+                        <div className='modalLoginBody'>
+                            <h1 className='modalLoginTitle'>¡Saludos!, visitante.<br/>Por favor ingresa tu correo electrónico y contraseña para iniciar sesión</h1>
+                        </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
