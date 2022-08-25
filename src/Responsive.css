@@ -48,6 +48,9 @@
         margin-left: 2rem;
         margin-right: 1rem;
     }
+    .hiddenModal {
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 512px) {
