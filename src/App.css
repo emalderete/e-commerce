@@ -36,6 +36,11 @@ body {
     pointer-events: none;
 }
 
+.listStyleNone {
+    list-style: none;
+    padding: 0;
+}
+
 
 /*------------ Diseño de escritorio -------------*/
 
@@ -285,6 +290,42 @@ body {
 
 .navButtons:hover {
     color: #ffffff;
+}
+
+
+/*----------- Footer -------------*/
+
+.footerContainer {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 80%;
+}
+
+.fourColumnsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4rem 0;
+}
+
+.fiscalQR {
+    width: 7rem;
+}
+
+.columnSells ul li {
+    margin: 1rem 0;
+}
+
+.columnAbout ul li {
+    margin: 1rem 0;
+}
+
+.columnFollow {
+    margin: 1rem 0;
+}
+
+.copyrights {
+    padding-bottom: 2rem;
+    text-align: center;
 }
 
 

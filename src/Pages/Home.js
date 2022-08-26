@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../Components/Common/Header';
 import Navbar from '../Components/Common/Navbar';
 import Slider from '../Components/Home/Slider';
-// import Footer from '../Components/Common/Footer';
+import '../Components/Home/Home.css';
+import Footer from '../Components/Common/Footer';
 
 const Home = () => {
     return (
@@ -10,7 +11,7 @@ const Home = () => {
             <Header></Header>
             <Navbar></Navbar>
             <Slider></Slider>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };
