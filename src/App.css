@@ -10,6 +10,10 @@ font-family: 'Ubuntu', sans-serif; */
 
 body {
     background-color: #ebebeb!important;
+    background: url(./Img/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 
