@@ -6,11 +6,11 @@ const Footer = () => {
         <div className='footerContainer'>
             <div className='footer'>
                 <div className='fourColumnsContainer'>
-                    <div className='brandContainer' style={{marginTop: '2.5rem'}}>
+                    <div className='brandContainer brandContainerFooter' style={{marginTop: '2.5rem'}}>
                         <img className='brand' src={Brand} alt=''></img>
                         <span className='brandText'>E-Commerce</span>
                     </div>
-                    <div className='columnSells'>
+                    <div className='columnSells hideContentOnMobile'>
                         <ul className='listStyleNone'>
                             <li>Categorias</li>
                             <li>Destacado</li>
@@ -18,7 +18,7 @@ const Footer = () => {
                             <li>Productos</li>
                         </ul>
                     </div>
-                    <div className='columnAbout'>
+                    <div className='columnAbout hideContentOnMobile'>
                         <ul className='listStyleNone'>
                             <li>Contacto</li>
                             <li>Sugerencias</li>
@@ -34,13 +34,13 @@ const Footer = () => {
                             <a className='icons' href='https://www.instagram.com/' rel='noreferrer noopener' target='blank'><i className='fa-brands fa-instagram'></i></a>
                             <a className='icons' href='https://www.youtube.com/' rel='noreferrer noopener' target='blank'><i className='fa-brands fa-youtube'></i></a>
                         </div>
-                        <span>Contactanos:</span>
-                        <ul style={{marginTop: '0.5rem'}} className='listStyleNone'>
+                        <span className='hideContentOnMobile'>Contactanos:</span>
+                        <ul style={{marginTop: '0.5rem'}} className='listStyleNone hideContentOnMobile'>
                             <li>Teléfono: (+54) 381 1234 567</li>
                             <li>Mail: ejemplo@correo.com</li>
                         </ul>
                     </div>
-                    <img className='fiscalQR' src='https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg' alt='código QR de data fiscal' />
+                    <img className='fiscalQR hideContentOnMobile' src='https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg' alt='código QR de data fiscal' />
                 </div>
                 <div className='copyrights'>
                     <span>&copy; 2022. E-Commerce, la marca comercial, el logo y sus referencias son marcas registradas pertenecientes a RollingCode. Todos los derechos.</span>

@@ -2,8 +2,10 @@ import React from 'react';
 
 const Slider = () => {
     return (
-        <div>
-            texto
+        <div className='sliderContainer'>
+            <div className='slider'>
+            Area dedicada para el Slider
+            </div>
         </div>
     );
 };
