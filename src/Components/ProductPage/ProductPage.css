@@ -18,6 +18,7 @@
     justify-content: center;
     margin-bottom: 8vw;
     font-family: 'Ubuntu', sans-serif;
+    height: 18rem;
 }
 
 .products {
@@ -26,6 +27,7 @@
     border-radius: 5px;
     box-shadow: 0px 5px 10px #b9b9b9;
     padding: 2rem 0;
+    height: 11.7rem;
 }
 
 .noProducts h5 {
@@ -34,7 +36,50 @@
 }
 
 .addButton {
-    position: absolute;
-    font-size: 3.5rem;
-    right: 1rem;
+    position: fixed;
+    font-size: 3rem;
+    right: 0;
+    bottom: 20vh;
+    background-color: #dfdfdf;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border: 2px solid #828282;
+    border-right: none;
+    color: #51c55f;
+    transition: 250ms;
+}
+
+.moveAddButton {
+    transform: translateX(-100vw);
+}
+
+
+/*-------------- Overlay para un nuevo producto ---------------*/
+
+.overlayNewItem {
+    height: 100%;
+    width: 100%;
+    background-color: #dfdfdf;
+    position: fixed;
+    top: 0;
+    font-family: 'Ubuntu', sans-serif;
+    transition: 250ms;
+}
+
+.hideOverlayNewItem {
+    transform: translateX(100%);
+}
+
+.overlayNewItem h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.newItemForm {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid black;
 }

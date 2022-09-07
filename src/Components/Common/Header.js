@@ -146,6 +146,14 @@ const Header = () => {
                                             <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
                                         </div>
                                     </div>
+                                    <div style={{marginTop: '1.5rem'}} className='modalInput'>
+                                        <label name='password'>Repetir contraseña</label>
+                                        <input type={showPass ? 'text' : 'password'} required />
+                                        <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
+                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
+                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                        </div>
+                                    </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                                         <button className='buttonLoginContinue' type='submit'>Continuar</button>
                                     </div>
