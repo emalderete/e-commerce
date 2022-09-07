@@ -60,6 +60,7 @@ const Header = () => {
                             <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>
                             <div style={{margin: '0 2vw', width: '0.2rem', height: '2.5rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
                             <button className='registerButton' type='button' onClick={showRegisterModalHandler}>Registrarse</button>
+                            <NavLink to='/product'>a Productos</NavLink>
                         </div>
                         <div className='social'>
                             <div>
