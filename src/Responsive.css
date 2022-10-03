@@ -79,6 +79,9 @@
     .brandContainerFooter span {
         font-size: 300%;
     }
+    .overlayAddItem {
+        width: 80%;
+    }
 }
 
 @media (max-width: 512px) {
@@ -101,6 +104,9 @@
     }
     .brandContainerFooter span {
         font-size: 150%;
+    }
+    .overlayAddItem {
+        width: 100%;
     }
 }
 
