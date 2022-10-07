@@ -68,10 +68,20 @@ const ProductPage = () => {
                         {
                             
                         }
-                        <div className='productsItem'>
-                            <img src='#' alt=''/>
-                            <h3>Titulo del artículo</h3>
-                            <p>Descripción del artículo</p>
+                        <div className='item'>
+                            <div className='itemGeneral'>
+                                <div className='itemCoverContainer'>
+                                    <img className='itemCover' src='https://media.revistagq.com/photos/5ca5eca84c7adb138100c90a/3:4/w_318,h_424,c_limit/el_pantalon_de_vestir_894893361.jpg' alt=''/>
+                                </div>
+                                <div className='itemInfoContainer'>
+                                    <h3>Titulo de prueba, pantalon de vestir</h3>
+                                    <span>$3.500</span>
+                                    <p><b>Descripción de prueba:</b><br/>Pantalon de gabardina de excelente calidad de manufactura. Compuesto de fibra semisintética tejida a mano</p>
+                                </div>
+                            </div>
+                            <div className='itemCategory'>
+                                <span>Categoría de prueba</span>
+                            </div>
                         </div>
                         <button type='button' className='addButton' onClick={overlayNewItemHandler}><i className='fa-solid fa-circle-plus'></i></button>
                     </div>

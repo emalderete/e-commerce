@@ -27,7 +27,6 @@
     border-radius: 5px;
     box-shadow: 0px 5px 10px #b9b9b9;
     padding: 2rem 0;
-    height: 11.7rem;
 }
 
 .noProducts h5 {
@@ -147,4 +146,74 @@
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
     background-color: #820d00;
+}
+
+
+/*-------------- Item publicado ---------------*/
+
+.item {
+    /* border: 1px solid #a7a7a7; */
+    margin: 1vw 2vw;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    height: 10rem;
+    background-color: #efefef;
+    box-shadow: 2px 2px 5px #afafaf;
+}
+
+.itemGeneral {
+    display: flex;
+    border-top-left-radius: inherit;
+    width: 70%;
+}
+
+.itemCoverContainer {
+    width: 12rem;
+    height: 10rem;
+    border-top-left-radius: inherit;
+    border-bottom-right-radius: 1rem;
+    margin-right: 2rem;
+}
+
+.itemCover {
+    height: inherit;
+    border-radius: inherit;
+    background-position: cover;
+}
+
+.itemInfoContainer {
+    width: 73%;
+}
+
+.itemInfoContainer h3 {
+    height: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 36.3rem;
+}
+
+.itemInfoContainer span {
+    font-size: 140%;
+    color: #00a650;
+    font-weight: 600;
+}
+
+.itemInfoContainer p {
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 4.9rem;
+}
+
+.itemCategory {
+    padding: 0 1vw;
+    height: 2rem;
+    border-bottom-left-radius: 1rem;
+    background-color: yellow;
+    box-shadow: -2px 2px 4px #cecece;
 }

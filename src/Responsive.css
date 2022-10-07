@@ -1,5 +1,15 @@
 /*----------- Diseño adaptable: Ancho -----------*/
 
+@media (max-width: 1200px) {
+    .itemInfoContainer h3 {
+        width: 30rem;
+        font-size: 150%;
+    }
+    .itemInfoContainer span {
+        font-size: 120%;
+    }
+}
+
 @media (max-width: 1023px) {
     .brandContainer {
         height: 5vw;
@@ -23,6 +33,22 @@
     }
     .productTitle div {
         width: 44.5%;
+    }
+    .itemInfoContainer h3 {
+        width: 23rem;
+        font-size: 135%;
+    }
+    .itemInfoContainer p {
+        font-size: 90%;
+        margin-top: -0.1rem;
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .itemInfoContainer h3 {
+        width: 20rem;
+        font-size: 125%;
     }
 }
 
@@ -82,6 +108,20 @@
     .overlayAddItem {
         width: 80%;
     }
+    .itemInfoContainer h3 {
+        width: 22rem;
+        font-size: 120%;
+        margin-top: 2%;
+    }
+    .itemCoverContainer {
+        display: none;
+    }
+    .itemGeneral {
+        margin-left: 3%;
+    }
+    .itemInfoContainer span {
+        font-size: 110%;
+    }
 }
 
 @media (max-width: 512px) {
@@ -108,12 +148,23 @@
     .overlayAddItem {
         width: 100%;
     }
+    .itemInfoContainer h3 {
+        width: 17rem;
+        font-size: 115%;
+    }
+    .itemInfoContainer span {
+        font-size: 95%;
+    }
 }
 
 @media (max-width: 420px) {
     .navbar {
         margin-right: 0.5rem;
         margin-left: 2.5rem;
+    }
+    .itemInfoContainer h3 {
+        font-size: 110%;
+        width: 14rem;
     }
 }
 
