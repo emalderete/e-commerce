@@ -7,50 +7,30 @@ import { constructorNewItem } from '../Components/ProductPage/Data';
 
 const ProductPage = () => {
     const [showOverlay, setShowOverlay] = useState(false);
-    var storage_string = JSON.stringify(localStorage);
 
     function overlayNewItemHandler(){
         showOverlay ? setShowOverlay(false) : setShowOverlay(true);
     };
 
-    function randomNumberGenerator() {
-        return Math.floor(Math.random() * 10000);
-    }
-
     function newItemLoader(){
-        let itemId = 'item' + randomNumberGenerator();
         let itemName = document.querySelector('#itemName').value;
         let itemPrice = document.querySelector('#itemPrice').value;
         let itemDesc = document.querySelector('#itemDesc').value;
         let itemCat = document.querySelector('#itemCat').value;
         let itemImage1 = document.querySelector('#itemImage1').value;
         let itemImage2 = document.querySelector('#itemImage2').value;
-
         let itemCreated = new constructorNewItem(itemName, itemPrice, itemDesc, itemCat, itemImage1, itemImage2);
-        let itemCreated_string = JSON.stringify(itemCreated);
-
-        if (storage_string.indexOf(itemId) === -1) {
-            localStorage.setItem(itemId, itemCreated_string);
-            console.log('se agregó el nuevo artículo a la base de datos');
+        if (JSON.stringify(localStorage).indexOf('productsForSale') === -1){
+            let itemOnArray = [];
+            itemOnArray.push(itemCreated);
+            let itemCreated_string = JSON.stringify(itemOnArray);
+            localStorage.setItem('productsForSale', itemCreated_string);
         } else {
-            itemId = 'item' + randomNumberGenerator();
-            localStorage.setItem(itemId, itemCreated_string);
-            console.log('se agregó el nuevo artículo luego de 1 reintento');
-        }
-
-        // function printProducts(){
-        //     if (localStorage === null){
-        //         return (
-        //             <div className='noProducts'>
-        //                 <h5 style={{marginBottom: '2rem'}}>Por ahora no hay productos que mostrar <i className='fa-solid fa-boxes-packing'>a</i></h5>
-        //                 <h5>¡Agrega uno nuevo!</h5>
-        //                 <h5>Pulsa el botón "<i className='fa-solid fa-circle-plus'></i>"</h5>
-        //             </div>
-        //         );
-        //     } else {
-
-        //     };
-        // };
+            let storageParse = JSON.parse(localStorage.getItem('productsForSale'));
+            storageParse.push(itemCreated);
+            let storage_string = JSON.stringify(storageParse);
+            localStorage.setItem('productsForSale', storage_string);
+        };
     };
 
     return (
