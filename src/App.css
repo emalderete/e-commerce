@@ -76,6 +76,10 @@ body {
     align-items: center;
 }
 
+.linkBrand {
+    text-decoration: none;
+}
+
 .brand {
     height: inherit;
 }

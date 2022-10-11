@@ -15,3 +15,15 @@ export class constructorNewItem {
         this.optional_image = item_image2;
     }
 };
+
+export class constructorNewRegister {
+    constructor (
+        user_name,
+        user_mail,
+        user_password
+    ){
+        this.userName = user_name;
+        this.userMail = user_mail;
+        this.userPassword = user_password;
+    }
+};
