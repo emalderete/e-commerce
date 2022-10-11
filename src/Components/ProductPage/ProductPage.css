@@ -210,11 +210,76 @@
     height: 4.9rem;
 }
 
+.itemSecondary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
 .itemCategory {
     padding: 0 1vw;
     height: 2rem;
+    width: 100%;
     border-bottom-left-radius: 1rem;
     background-color: #00a650;
     color: #ffffff;
     box-shadow: -2px 2px 4px #cecece;
+}
+
+.contextualButton {
+    border: none;
+    width: 2rem;
+    align-self: flex-end;
+    font-size: 200%;
+    border-bottom-right-radius: 1rem;
+    color: #616161;
+    background-color: #dddddd;
+    transition: 400ms;
+}
+
+.contextualButton:hover {
+    background-color: #00a650;
+    color: #ffffff;
+}
+
+.itemContextualMenu {
+    border: 1px solid #c0c0c0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 14vw;
+    margin-top: 1.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #dddddd;
+    transition: 250ms;
+}
+
+.contextualHide {
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contextualButtons {
+    border: none;
+    background-color: #dddddd;
+    margin: 8px 0;
+    font-size: 80%;
+    font-weight: 600;
+    color: #616161;
+    text-align: start;
+    transition: 300ms;
+}
+
+#highlightButton:hover {
+    color: #c6a605;
+}
+
+#editButton:hover {
+    color: #00a650;
+}
+
+#deleteButton:hover {
+    color: #a61100;
 }

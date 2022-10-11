@@ -8,6 +8,9 @@
     .itemInfoContainer span {
         font-size: 120%;
     }
+    .itemContextualMenu {
+        right: 14.7vw;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -43,12 +46,18 @@
         margin-top: -0.1rem;
         -webkit-line-clamp: 3;
     }
+    .itemContextualMenu {
+        right: 15vw;
+    }
 }
 
 @media (max-width: 900px) {
     .itemInfoContainer h3 {
         width: 20rem;
         font-size: 125%;
+    }
+    .itemContextualMenu {
+        right: 15.5vw;
     }
 }
 
@@ -122,6 +131,9 @@
     .itemInfoContainer span {
         font-size: 110%;
     }
+    .itemContextualMenu {
+        right: 16.5vw;
+    }
 }
 
 @media (max-width: 512px) {
@@ -155,6 +167,9 @@
     .itemInfoContainer span {
         font-size: 95%;
     }
+    .itemContextualMenu {
+        right: 19vw;
+    }
 }
 
 @media (max-width: 420px) {
@@ -165,6 +180,9 @@
     .itemInfoContainer h3 {
         font-size: 110%;
         width: 14rem;
+    }
+    .itemContextualMenu {
+        right: 20vw;
     }
 }
 
