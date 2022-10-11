@@ -7,10 +7,14 @@ import { constructorNewItem } from '../Components/ProductPage/Data';
 
 const ProductPage = () => {
     const [showOverlay, setShowOverlay] = useState(false);
+    const [showContextualMenu, setShowContextualMenu] = useState(false);
 
     function overlayNewItemHandler(){
         showOverlay ? setShowOverlay(false) : setShowOverlay(true);
     };
+    function contextualMenuHandler(){
+        showContextualMenu ? setShowContextualMenu(false) : setShowContextualMenu(true);
+    }
 
     function newItemLoader(){
         let itemName = document.querySelector('#itemName').value;
@@ -33,6 +37,48 @@ const ProductPage = () => {
         };
     };
 
+    function renderItems(){
+        if (JSON.stringify(localStorage).indexOf('productsForSale') === -1){
+            return (
+            <div className='noProducts'>
+                <h5 style={{marginBottom: '2rem'}}>Por ahora no hay productos que mostrar <i className='fa-solid fa-boxes-packing'>a</i></h5>
+                <h5>¡Agrega uno nuevo!</h5>
+                <h5>Pulsa el botón "<i className='fa-solid fa-circle-plus'></i>"</h5>
+            </div>
+            );
+        } else {
+            let parsedItems = JSON.parse(localStorage.getItem('productsForSale'));
+            console.log(parsedItems);
+            parsedItems.map((item, index)=>{
+                return (
+                    <div key={index} className='item'>
+                        <div className='itemGeneral'>
+                            <div className='itemCoverContainer'>
+                                <img className='itemCover' src={item.cover_image} alt=''/>
+                            </div>
+                            <div className='itemInfoContainer'>
+                                <h3>{item.name}</h3>
+                                <span>$ {item.price}</span>
+                                <p><b>Descripción:</b><br/>{item.description}</p>
+                            </div>
+                        </div>
+                        <div className='itemSecondary'>
+                            <div className='itemCategory'>
+                                <span>{item.category}</span>
+                            </div>
+                            <button className='contextualButton' onClick={contextualMenuHandler}><i className='fa-solid fa-ellipsis-vertical'></i></button>
+                        </div>
+                        <div className={showContextualMenu ? 'itemContextualMenu' : 'itemContextualMenu contextualHide'}>
+                            <button className='contextualButtons' id='highlightButton'><i className='fa-solid fa-star'></i> Marcar como "Destacado"</button>
+                            <button className='contextualButtons' id='editButton'><i className='fa-solid fa-pencil'></i> Editar publicación</button>
+                            <button className='contextualButtons' id='deleteButton'><i className='fa-solid fa-delete-left'></i> Eliminar publicación</button>
+                        </div>
+                    </div>
+                )
+            });
+        }
+    }
+
     return (
         <div style={showOverlay ? {position: 'fixed', width: '100%'} : null}>
             <Header></Header>
@@ -46,23 +92,8 @@ const ProductPage = () => {
                     <div className='products'>
                         {/* Cuadro de dialogo a mostrar en caso de que no haya cargado ningun producto */}
                         {
-                            
+                          renderItems()  
                         }
-                        <div className='item'>
-                            <div className='itemGeneral'>
-                                <div className='itemCoverContainer'>
-                                    <img className='itemCover' src='https://media.revistagq.com/photos/5ca5eca84c7adb138100c90a/3:4/w_318,h_424,c_limit/el_pantalon_de_vestir_894893361.jpg' alt=''/>
-                                </div>
-                                <div className='itemInfoContainer'>
-                                    <h3>Titulo de prueba, pantalon de vestir</h3>
-                                    <span>$3.500</span>
-                                    <p><b>Descripción de prueba:</b><br/>Pantalon de gabardina de excelente calidad de manufactura. Compuesto de fibra semisintética tejida a mano</p>
-                                </div>
-                            </div>
-                            <div className='itemCategory'>
-                                <span>Categoría de prueba</span>
-                            </div>
-                        </div>
                         <button type='button' className='addButton' onClick={overlayNewItemHandler}><i className='fa-solid fa-circle-plus'></i></button>
                     </div>
                 </div>
