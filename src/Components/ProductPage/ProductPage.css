@@ -18,7 +18,6 @@
     justify-content: center;
     margin-bottom: 8vw;
     font-family: 'Ubuntu', sans-serif;
-    height: 18rem;
 }
 
 .products {
@@ -152,7 +151,6 @@
 /*-------------- Item publicado ---------------*/
 
 .item {
-    /* border: 1px solid #a7a7a7; */
     margin: 1vw 2vw;
     display: flex;
     justify-content: space-between;
