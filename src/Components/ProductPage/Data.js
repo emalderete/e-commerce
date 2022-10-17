@@ -27,3 +27,13 @@ export class constructorNewRegister {
         this.userPassword = user_password;
     }
 };
+
+export class constructorLogedUser {
+    constructor (
+        user_name,
+        is_Loged
+    ){
+        this.user = user_name;
+        this.loged = is_Loged;
+    }
+}

@@ -107,6 +107,26 @@ body {
     color: #ffffff;
 }
 
+.adminProductsButton {
+    align-self: center;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 300ms;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    margin-left: 2rem;
+}
+
+.adminProductsButton:hover {
+    color: #ffffff;
+}
+
+.userGreeting {
+    margin-top: 0.5rem;
+    color: #ff9393;
+    align-self: center;
+}
+
 .search {
     display: flex;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Brand from '../../Img/brand.svg';
-import { constructorNewRegister } from '../ProductPage/Data';
+import { constructorNewRegister, constructorLogedUser } from '../ProductPage/Data';
 
 const Header = () => {
 
@@ -75,6 +75,24 @@ const Header = () => {
         };
     };
 
+    // Login:
+
+    function sessionLogin(e){
+        e.preventDefault();
+        let loginMail = document.querySelector('#sessionLoginMail').value;
+        let loginPass = document.querySelector('#sessionLoginPassword').value;
+        
+        if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1 || JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginMail) === -1 || JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginPass) === -1){
+            alert('El correo o la contraseña parecen ser inválidos');
+        } else if(JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginMail) !== -1 && JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginPass) !== -1) {
+            let array = [];
+            let loged = new constructorLogedUser(loginMail, true);
+            array.push(loged);
+            let loged_string = JSON.stringify(array);
+            sessionStorage.setItem('userLoged', loged_string);
+        }
+    }
+
 
     return (
         <div>
@@ -108,7 +126,8 @@ const Header = () => {
                             <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>
                             <div style={{margin: '0 2vw', width: '0.2rem', height: '2.5rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
                             <button className='registerButton' type='button' onClick={showRegisterModalHandler}>Registrarse</button>
-                            <NavLink to='/product'>a Productos</NavLink>
+                            <h5 className='userGreeting displayNone'>¡Hola!, $UserName$. Bienvenido de vuelta.</h5>
+                            <NavLink className='adminProductsButton displayNone' to='/product'>Administrar productos <i className='fas fa-user-cog'></i></NavLink>
                         </div>
 
                         { /* Botones de redes sociales */}
@@ -163,18 +182,18 @@ const Header = () => {
                                 <form className='formLogin'>
                                     <div className='modalInput'>
                                         <label name='mail'>E-mail</label>
-                                        <input type='email' className='loginInputMail' required />
+                                        <input type='email' className='loginInputMail' id='sessionLoginMail' required />
                                     </div>
                                     <div className='modalInput'>
                                         <label name='password'>Contraseña</label>
-                                        <input type={showPass ? 'text' : 'password'} className='loginInputPassword' required />
+                                        <input type={showPass ? 'text' : 'password'} className='loginInputPassword' id='sessionLoginPassword' required />
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
                                             <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                             <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
                                         </div>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-                                        <button style={{margin: '0 1rem', marginTop: '1rem'}} className='buttonLoginContinue' type='submit'>Continuar</button>
+                                        <button style={{margin: '0 1rem', marginTop: '1rem'}} className='buttonLoginContinue' type='submit' onClick={sessionLogin}>Continuar</button>
                                         <NavLink className='recoverLink' to='/recover'>¿Olvidaste tu contraseña?</NavLink>
                                     </div>
                                 </form>
