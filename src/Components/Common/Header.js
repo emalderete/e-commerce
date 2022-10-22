@@ -105,7 +105,7 @@ const Header = () => {
                     <NavLink className='linkBrand' to='/'>
                         <div className='brandContainer'>
                             <img className='brand' src={Brand} alt=''></img>
-                            <span className='brandText'>E-Commerce</span>
+                            <span className='brandText'>RollingCommerce</span>
                         </div>    
                     </NavLink>
                     <div style={{display: 'flex', alignItems: 'center'}}>

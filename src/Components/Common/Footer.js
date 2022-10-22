@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className='fourColumnsContainer'>
                     <div className='brandContainer brandContainerFooter' style={{marginTop: '2.5rem'}}>
                         <img className='brand' src={Brand} alt=''></img>
-                        <span className='brandText'>E-Commerce</span>
+                        <span className='brandText'>RollingCommerce</span>
                     </div>
                     <div className='columnSells hideContentOnMobile'>
                         <ul className='listStyleNone'>
@@ -43,7 +43,7 @@ const Footer = () => {
                     <img className='fiscalQR hideContentOnMobile' src='https://1.bp.blogspot.com/-tyDj3FH73V0/UVugtbI_MYI/AAAAAAAAGYE/TzM5UBA57QQ/s1600/Data-fiscal-Web.jpg' alt='código QR de data fiscal' />
                 </div>
                 <div className='copyrights'>
-                    <span>&copy; 2022. E-Commerce, la marca comercial, el logo y sus referencias son marcas registradas pertenecientes a RollingCode. Todos los derechos.</span>
+                    <span>&copy; 2022. RollingCommerce, la marca comercial, el logo y sus referencias son marcas registradas pertenecientes a RollingCode. Todos los derechos.</span>
                 </div>
             </div>
         </div>
