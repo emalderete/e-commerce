@@ -18,15 +18,23 @@ export class constructorNewItem {
 
 export class constructorNewRegister {
     constructor (
-        user_name,
         user_mail,
         user_password
     ){
-        this.userName = user_name;
         this.userMail = user_mail;
         this.userPassword = user_password;
     }
 };
+
+export class constructorUser {
+    constructor(
+        user_name,
+        user_data
+    ) {
+        this.userName = user_name;
+        this.userData = user_data;
+    }
+}
 
 export class constructorLogedUser {
     constructor (

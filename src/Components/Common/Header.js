@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Brand from '../../Img/brand.svg';
-import { constructorNewRegister, constructorLogedUser } from '../ProductPage/Data';
+import { constructorNewRegister, constructorLogedUser, constructorUser } from '../ProductPage/Data';
+import { registerFormName, registerFormMail, registerFormPass, registerFormRePass, registerFormCorrect } from '../FormsValidations';
 
 const Header = () => {
 
@@ -51,28 +52,41 @@ const Header = () => {
 
     // Lógica de funcionamiento de la sesión.
     // Registro:
+    // Validaciones:
 
-    function newRegister(e){
+    function RegisterForm(e){
         e.preventDefault();
         let username = document.querySelector('.registerInputUsername').value;
         let mail = document.querySelector('.registerInputMail').value;
         let password = document.querySelector('.registerInputPassword').value;
         let passwordConfirm = document.querySelector('.registerInputPasswordConfirm').value;
-        let newUserDataCompiled = new constructorNewRegister(username, mail, password);
-        
-        console.log(newUserDataCompiled);
-
-        if (JSON.stringify(localStorage).indexOf('registeredUsers') === -1){
-            let array = [];
-            array.push(newUserDataCompiled);
-            let newUser_string = JSON.stringify(array);
-            localStorage.setItem('registeredUsers', newUser_string);
-        } else {
-            let getUsersData = JSON.parse(localStorage.getItem('registeredUsers'));
-            getUsersData.push(newUserDataCompiled);
-            let newUserToRegister = JSON.stringify(getUsersData);
-            localStorage.setItem('registeredUsers', newUserToRegister);
+        if(!registerFormName(username)){
+            alert('El nombre de usuario ingresado no es válido, debe ser de al menos 4 carácteres');
+        } else if(!registerFormMail(mail)){
+            alert('Por favor ingrese un correo válido');
+        } else if(!registerFormPass(password)){
+            alert('La contraseña debe tener al menos 8 carácteres');
+        } else if(!registerFormRePass(password, passwordConfirm)){
+            alert('Las contraseñas no coinciden');
         };
+        if(registerFormCorrect(username, mail, password, passwordConfirm)){
+            let newUserDataCompiled = new constructorNewRegister(mail, password);
+            if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1){
+                let object = [{}];
+                let userConfirmed = new constructorUser(username, newUserDataCompiled);
+                object.push(userConfirmed);
+                let newUser_string = JSON.stringify(object);
+                localStorage.setItem('registeredUsers', newUser_string);
+            } else {
+                let userConfirmed = new constructorUser(username, newUserDataCompiled);
+                let getUsersData = JSON.parse(localStorage.getItem('registeredUsers'));
+                getUsersData.push(userConfirmed);
+                let newUserToRegister = JSON.stringify(getUsersData);
+                localStorage.setItem('registeredUsers', newUserToRegister);
+            }
+        } else {
+            return console.log('No se pudo completar el registro');
+        }
     };
 
     // Login:
@@ -188,8 +202,8 @@ const Header = () => {
                                         <label name='password'>Contraseña</label>
                                         <input type={showPass ? 'text' : 'password'} className='loginInputPassword' id='sessionLoginPassword' required />
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
-                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
-                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                         </div>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
@@ -225,20 +239,20 @@ const Header = () => {
                                         <label name='password'>Contraseña</label>
                                         <input type={showPass ? 'text' : 'password'} className='registerInputPassword' required />
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
-                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
-                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                         </div>
                                     </div>
                                     <div style={{marginTop: '1.5rem'}} className='modalInput'>
                                         <label name='password'>Repetir contraseña</label>
                                         <input type={showPass ? 'text' : 'password'} className='registerInputPasswordConfirm' required />
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
-                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
-                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
+                                            <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                         </div>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-                                        <button className='buttonLoginContinue' type='submit' onClick={newRegister}>Continuar</button>
+                                        <button className='buttonLoginContinue' type='submit' onClick={RegisterForm}>Continuar</button>
                                     </div>
                                 </form>
                             </div>
