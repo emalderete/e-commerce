@@ -18,7 +18,6 @@ const Header = () => {
     const [showPass, setShowPass] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
-    const [tempDataUser, setTempDataUser] = useState([]);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -96,19 +95,39 @@ const Header = () => {
         e.preventDefault();
         let sessionMail = document.querySelector('#sessionLoginMail').value;
         let sessionPass = document.querySelector('#sessionLoginPassword').value;
+        var usersParsedStorage = JSON.parse(localStorage.getItem('registeredUsers'));
 
         if(JSON.stringify(localStorage).indexOf('registeredUsers') !== -1){
-            for (let user of JSON.parse(localStorage.getItem('registeredUsers'))){
-                if(sessionMail === user.userData.userMail){
-                 setTempDataUser(user);
-                 if(sessionPass === tempDataUser.userPassword){
-                    let userLoged = tempDataUser;
-                    let userLoged_string = JSON.stringify(userLoged);
-                    sessionStorage.setItem('userLoged', userLoged_string);
+            for (let user of usersParsedStorage){
+                if(sessionMail === user.userMail){
+                    let userTemp = user;
+                    if(sessionPass === userTemp.userPassword){
+                        let userLoged = userTemp;
+                        let userLoged_string = JSON.stringify(userLoged);
+                        sessionStorage.setItem('userLoged', userLoged_string);
                     }
+                } else {
+                    console.log('El mail o la contraseña son incorrectos');
                 }
             }
         }
+
+        // e.preventDefault();
+        // let sessionMail = document.querySelector('#sessionLoginMail').value;
+        // let sessionPass = document.querySelector('#sessionLoginPassword').value;
+
+        // if(JSON.stringify(localStorage).indexOf('registeredUsers') !== -1){
+        //     for (let user of JSON.parse(localStorage.getItem('registeredUsers'))){
+        //         if(sessionMail === user.userData.userMail){
+        //          setTempDataUser(user);
+        //          if(sessionPass === tempDataUser.userPassword){
+        //             let userLoged = tempDataUser;
+        //             let userLoged_string = JSON.stringify(userLoged);
+        //             sessionStorage.setItem('userLoged', userLoged_string);
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     return (
