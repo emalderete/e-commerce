@@ -111,23 +111,27 @@ const Header = () => {
                 }
             }
         }
+    }
 
-        // e.preventDefault();
-        // let sessionMail = document.querySelector('#sessionLoginMail').value;
-        // let sessionPass = document.querySelector('#sessionLoginPassword').value;
+    // Renderizado condicional
 
-        // if(JSON.stringify(localStorage).indexOf('registeredUsers') !== -1){
-        //     for (let user of JSON.parse(localStorage.getItem('registeredUsers'))){
-        //         if(sessionMail === user.userData.userMail){
-        //          setTempDataUser(user);
-        //          if(sessionPass === tempDataUser.userPassword){
-        //             let userLoged = tempDataUser;
-        //             let userLoged_string = JSON.stringify(userLoged);
-        //             sessionStorage.setItem('userLoged', userLoged_string);
-        //             }
-        //         }
-        //     }
-        // }
+    function greetings(){
+        if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
+            return(
+                <div>
+                    <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenido de vuelta.</h5>
+                    <NavLink className='adminProductsButton' to='/product'>Administrar productos <i className='fas fa-user-cog'></i></NavLink>
+                </div>
+            );
+        } else {
+            return(
+                <div className='sesion'>
+                    <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>
+                    <div style={{margin: '0 2vw', width: '0.2rem', height: '2.5rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
+                    <button className='registerButton' type='button' onClick={showRegisterModalHandler}>Registrarse</button>
+                </div>
+            );
+        }
     }
 
     return (
@@ -159,11 +163,7 @@ const Header = () => {
                         { /* Botones superiores de inicio de sesion y registro */}
 
                         <div className='sesion'>
-                            <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>
-                            <div style={{margin: '0 2vw', width: '0.2rem', height: '2.5rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
-                            <button className='registerButton' type='button' onClick={showRegisterModalHandler}>Registrarse</button>
-                            <h5 className='userGreeting displayNone'>¡Hola!, $UserName$. Bienvenido de vuelta.</h5>
-                            <NavLink className='adminProductsButton displayNone' to='/product'>Administrar productos <i className='fas fa-user-cog'></i></NavLink>
+                        {greetings()}
                         </div>
 
                         { /* Botones de redes sociales */}
