@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Brand from '../../Img/brand.svg';
-import { constructorNewRegister, constructorLogedUser, constructorUser } from '../ProductPage/Data';
+import { constructorNewRegister } from '../ProductPage/Data';
 import { registerFormName, registerFormMail, registerFormPass, registerFormRePass, registerFormCorrect } from '../FormsValidations';
 
 const Header = () => {
@@ -18,6 +18,7 @@ const Header = () => {
     const [showPass, setShowPass] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
+    const [tempDataUser, setTempDataUser] = useState([]);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -69,20 +70,19 @@ const Header = () => {
         } else if(!registerFormRePass(password, passwordConfirm)){
             alert('Las contraseñas no coinciden');
         };
-        if(registerFormCorrect(username, mail, password, passwordConfirm)){
-            let newUserDataCompiled = new constructorNewRegister(mail, password);
+        if(registerFormCorrect(username, mail, password, passwordConfirm) && JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(mail) === -1){
+            let newUserDataCompiled = new constructorNewRegister(username, mail, password);
             if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1){
-                let object = [{}];
-                let userConfirmed = new constructorUser(username, newUserDataCompiled);
-                object.push(userConfirmed);
+                let object = [];
+                object.push(newUserDataCompiled);
                 let newUser_string = JSON.stringify(object);
                 localStorage.setItem('registeredUsers', newUser_string);
             } else {
-                let userConfirmed = new constructorUser(username, newUserDataCompiled);
+                let newUserDataCompiled = new constructorNewRegister(username, mail, password);
                 let getUsersData = JSON.parse(localStorage.getItem('registeredUsers'));
-                getUsersData.push(userConfirmed);
-                let newUserToRegister = JSON.stringify(getUsersData);
-                localStorage.setItem('registeredUsers', newUserToRegister);
+                getUsersData.push(newUserDataCompiled);
+                let newUser_string = JSON.stringify(getUsersData);
+                localStorage.setItem('registeredUsers', newUser_string);
             }
         } else {
             return console.log('No se pudo completar el registro');
@@ -90,23 +90,26 @@ const Header = () => {
     };
 
     // Login:
+    // Lógica:
 
-    function sessionLogin(e){
+    function session(e) {
         e.preventDefault();
-        let loginMail = document.querySelector('#sessionLoginMail').value;
-        let loginPass = document.querySelector('#sessionLoginPassword').value;
-        
-        if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1 || JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginMail) === -1 || JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginPass) === -1){
-            alert('El correo o la contraseña parecen ser inválidos');
-        } else if(JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginMail) !== -1 && JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(loginPass) !== -1) {
-            let array = [];
-            let loged = new constructorLogedUser(loginMail, true);
-            array.push(loged);
-            let loged_string = JSON.stringify(array);
-            sessionStorage.setItem('userLoged', loged_string);
+        let sessionMail = document.querySelector('#sessionLoginMail').value;
+        let sessionPass = document.querySelector('#sessionLoginPassword').value;
+
+        if(JSON.stringify(localStorage).indexOf('registeredUsers') !== -1){
+            for (let user of JSON.parse(localStorage.getItem('registeredUsers'))){
+                if(sessionMail === user.userData.userMail){
+                 setTempDataUser(user);
+                 if(sessionPass === tempDataUser.userPassword){
+                    let userLoged = tempDataUser;
+                    let userLoged_string = JSON.stringify(userLoged);
+                    sessionStorage.setItem('userLoged', userLoged_string);
+                    }
+                }
+            }
         }
     }
-
 
     return (
         <div>
@@ -207,7 +210,7 @@ const Header = () => {
                                         </div>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-                                        <button style={{margin: '0 1rem', marginTop: '1rem'}} className='buttonLoginContinue' type='submit' onClick={sessionLogin}>Continuar</button>
+                                        <button style={{margin: '0 1rem', marginTop: '1rem'}} className='buttonLoginContinue' type='submit' onClick={session}>Continuar</button>
                                         <NavLink className='recoverLink' to='/recover'>¿Olvidaste tu contraseña?</NavLink>
                                     </div>
                                 </form>
