@@ -109,16 +109,49 @@ body {
 
 .adminProductsButton {
     align-self: center;
-    text-decoration: none;
-    color: #ffffff;
-    transition: 300ms;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    margin-left: 2rem;
 }
 
-.adminProductsButton:hover {
+.userAccountMenuButtons:hover {
+    color: #ff9393;
+}
+
+.userAccountButton {
+    border: none;
+    outline: none;
+    background-color: #00000000;
     color: #ffffff;
+    font-weight: 800;
+    font-family: 'Ubuntu', sans-serif;
+    transition: 200ms;
+}
+
+.userAccountMenu {
+    background-color: #404040;
+    width: 19%;
+    height: 34%;
+    position: absolute;
+}
+
+.userAccountMenu ul li {
+    list-style-type: none;
+    margin-left: -2rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid black;
+}
+
+.userAccountMenuButtons {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    border: none;
+    margin: 0 1rem;
+    padding: 0;
+    background-color: #00000000;
+    transition: 300ms;
+}
+
+.userAccountButton:hover {
+    color: #ff9393;
 }
 
 .userGreeting {

@@ -9,6 +9,7 @@ import Fav from './Pages/Fav';
 import Categories from './Pages/Categories';
 import Cart from './Pages/Cart';
 import Item from './Pages/Item';
+import AccountSettings from './Pages/AccountSettings';
 import './App.css';
 import './Responsive.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/recover' element={<RecoverPassword></RecoverPassword>}></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
+          <Route path='/settings' element={<AccountSettings></AccountSettings>}></Route>
           <Route path='/results' element={<SearchResults></SearchResults>}></Route>
           <Route path='/product' element={<ProductPage></ProductPage>}></Route>
           <Route path='/favorites' element={<Fav></Fav>}></Route>

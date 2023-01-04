@@ -53,6 +53,11 @@ const Header = () => {
     // Lógica de funcionamiento de la sesión.
     // Registro:
     // Validaciones:
+    // Datos base de administrador:
+
+    const adminData = [{userName : 'Admin', userMail : 'admin@mail.com', userPassword : 'administrador'}];
+    const adminData_string = JSON.stringify(adminData);
+    localStorage.setItem('registeredUsers', adminData_string);
 
     function RegisterForm(e){
         e.preventDefault();
@@ -120,7 +125,14 @@ const Header = () => {
             return(
                 <div>
                     <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenido de vuelta.</h5>
-                    <NavLink className='adminProductsButton' to='/product'>Administrar productos <i className='fas fa-user-cog'></i></NavLink>
+                    <button className='userAccountButton'>Cuenta</button>
+                    <div className='userAccountMenu'>
+                        <ul>
+                            <li><NavLink className='adminProductsButton userAccountMenuButtons' to='/product'> <i className='fas fa-user-cog'></i> Administrar productos</NavLink></li>
+                            <li><NavLink className='accountSettingsButton userAccountMenuButtons' to='/settings'> <i className='fa-solid fa-gear'></i> Configuración</NavLink></li>
+                            <li><button type='button' className='accountLogOut userAccountMenuButtons'> <i className='fa-solid fa-arrow-right-from-bracket'></i> Cerrar sesión</button></li>
+                        </ul>
+                    </div>
                 </div>
             );
         } else {
