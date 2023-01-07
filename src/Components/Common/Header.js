@@ -98,6 +98,15 @@ const Header = () => {
                 getUsersData.push(newUserDataCompiled);
                 let newUser_string = JSON.stringify(getUsersData);
                 localStorage.setItem('registeredUsers', newUser_string);
+                // Luego del registro se procederá al logeo de los datos y la recarga de la página
+                for(let user of getUsersData){
+                    if(username === user.userName){
+                        let userTemp = user;
+                        let userTemp_string = JSON.stringify(userTemp);
+                        sessionStorage.setItem('userLoged', userTemp_string);
+                        document.location.reload();
+                    }
+                }
             }
         } else {
             return console.log('No se pudo completar el registro');
