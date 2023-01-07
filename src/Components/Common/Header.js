@@ -18,6 +18,7 @@ const Header = () => {
     const [showPass, setShowPass] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
+    const [accountSettingsMenuShow, setAccountSettingsMenuShow] = useState(false);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -49,6 +50,10 @@ const Header = () => {
         showRegisterModalHandler();
         overlayMobileHandler();
     };
+
+    function showAccountMenuHandler(){
+        accountSettingsMenuShow ? setAccountSettingsMenuShow(false) : setAccountSettingsMenuShow(true);
+    }
 
     // Lógica de funcionamiento de la sesión.
     // Registro:
