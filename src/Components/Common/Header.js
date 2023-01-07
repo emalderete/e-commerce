@@ -60,9 +60,15 @@ const Header = () => {
     // Validaciones:
     // Datos base de administrador:
 
-    const adminData = [{userName : 'Admin', userMail : 'admin@mail.com', userPassword : 'administrador'}];
-    const adminData_string = JSON.stringify(adminData);
-    localStorage.setItem('registeredUsers', adminData_string);
+    
+
+    if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1){
+        const adminData = [{userName : 'Admin', userMail : 'admin@mail.com', userPassword : 'administrador'}];
+        const adminData_string = JSON.stringify(adminData);
+        localStorage.setItem('registeredUsers', adminData_string);
+    } else {
+        console.log('Admin: ' + 200);
+    }
 
     function RegisterForm(e){
         e.preventDefault();
