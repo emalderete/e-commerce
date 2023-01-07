@@ -110,6 +110,7 @@ const Header = () => {
                         let userLoged = userTemp;
                         let userLoged_string = JSON.stringify(userLoged);
                         sessionStorage.setItem('userLoged', userLoged_string);
+                        document.location.reload();
                     }
                 } else {
                     console.log('El mail o la contraseña son incorrectos');
@@ -118,24 +119,31 @@ const Header = () => {
         }
     }
 
+    function logout(){
+        sessionStorage.removeItem('userLoged');
+        document.location.reload();
+    }
+
     // Renderizado condicional
 
     function greetings(){
+        // Si se ha iniciado sesión
         if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
             return(
                 <div>
                     <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenido de vuelta.</h5>
-                    <button className='userAccountButton'>Cuenta</button>
-                    <div className='userAccountMenu'>
+                    <button className='userAccountButton' onClick={showAccountMenuHandler}>Cuenta</button>
+                    <div className={accountSettingsMenuShow ? 'userAccountMenu' : 'userAccountMenu hideAccountMenu'}>
                         <ul>
                             <li><NavLink className='adminProductsButton userAccountMenuButtons' to='/product'> <i className='fas fa-user-cog'></i> Administrar productos</NavLink></li>
                             <li><NavLink className='accountSettingsButton userAccountMenuButtons' to='/settings'> <i className='fa-solid fa-gear'></i> Configuración</NavLink></li>
-                            <li><button type='button' className='accountLogOut userAccountMenuButtons'> <i className='fa-solid fa-arrow-right-from-bracket'></i> Cerrar sesión</button></li>
+                            <li><button onClick={logout} type='button' className='accountLogOut userAccountMenuButtons'> <i className='fa-solid fa-arrow-right-from-bracket'></i> Cerrar sesión</button></li>
                         </ul>
                     </div>
                 </div>
             );
         } else {
+            // Si no se ha iniciado sesión
             return(
                 <div className='sesion'>
                     <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>

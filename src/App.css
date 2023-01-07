@@ -128,8 +128,20 @@ body {
 .userAccountMenu {
     background-color: #404040;
     width: 19%;
-    height: 34%;
     position: absolute;
+    margin-top: -1.5rem;
+    z-index: 10;
+    border: 1px solid black;
+    transition: 500ms;
+}
+
+.userAccountMenu ul {
+    margin: 0;
+}
+
+.hideAccountMenu {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .userAccountMenu ul li {
