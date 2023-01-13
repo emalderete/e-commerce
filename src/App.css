@@ -120,19 +120,25 @@ body {
     outline: none;
     background-color: #00000000;
     color: #ffffff;
-    font-weight: 800;
     font-family: 'Ubuntu', sans-serif;
     transition: 200ms;
+}
+
+.userAccountButton:hover {
+    filter: drop-shadow(0px 0px 5px #ffffff);
 }
 
 .userAccountMenu {
     background-color: #404040;
     width: 19%;
     position: absolute;
-    margin-top: -1.5rem;
     z-index: 10;
     border: 1px solid black;
-    transition: 500ms;
+    transition: 350ms;
+    text-align: start;
+    right: 0;
+    margin-top: 12rem;
+    font-size: 85%;
 }
 
 .userAccountMenu ul {
@@ -160,10 +166,6 @@ body {
     padding: 0;
     background-color: #00000000;
     transition: 300ms;
-}
-
-.userAccountButton:hover {
-    color: #ff9393;
 }
 
 .userGreeting {

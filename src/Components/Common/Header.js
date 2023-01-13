@@ -6,7 +6,7 @@ import { registerFormName, registerFormMail, registerFormPass, registerFormRePas
 
 const Header = () => {
 
-    // Estados y funciones que controlan la aparición y desaparición de:
+    // Referencias, Estados y funciones que controlan la aparición y desaparición de:
     // Ventana modal de inicio de sesión y ventana independiente de registro.
     // Menu desplegable para la versión móvil.
     // Botón de mostrar y ocultar contraseña.
@@ -18,7 +18,6 @@ const Header = () => {
     const [showPass, setShowPass] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
-    const [accountSettingsMenuShow, setAccountSettingsMenuShow] = useState(false);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -51,16 +50,10 @@ const Header = () => {
         overlayMobileHandler();
     };
 
-    function showAccountMenuHandler(){
-        accountSettingsMenuShow ? setAccountSettingsMenuShow(false) : setAccountSettingsMenuShow(true);
-    }
-
     // Lógica de funcionamiento de la sesión.
     // Registro:
     // Validaciones:
     // Datos base de administrador:
-
-    
 
     if(JSON.stringify(localStorage).indexOf('registeredUsers') === -1){
         const adminData = [{userName : 'Admin', userMail : 'admin@mail.com', userPassword : 'administrador'}];
@@ -139,27 +132,14 @@ const Header = () => {
         }
     }
 
-    function logout(){
-        sessionStorage.removeItem('userLoged');
-        document.location.reload();
-    }
-
     // Renderizado condicional
 
-    function greetings(){
+    function greetingsAndLogin(){
         // Si se ha iniciado sesión
         if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
             return(
-                <div>
-                    <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenido de vuelta.</h5>
-                    <button className='userAccountButton' onClick={showAccountMenuHandler}>Cuenta</button>
-                    <div className={accountSettingsMenuShow ? 'userAccountMenu' : 'userAccountMenu hideAccountMenu'}>
-                        <ul>
-                            <li><NavLink className='adminProductsButton userAccountMenuButtons' to='/product'> <i className='fas fa-user-cog'></i> Administrar productos</NavLink></li>
-                            <li><NavLink className='accountSettingsButton userAccountMenuButtons' to='/settings'> <i className='fa-solid fa-gear'></i> Configuración</NavLink></li>
-                            <li><button onClick={logout} type='button' className='accountLogOut userAccountMenuButtons'> <i className='fa-solid fa-arrow-right-from-bracket'></i> Cerrar sesión</button></li>
-                        </ul>
-                    </div>
+                <div className='userGreetingContainer'>
+                    <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenid@ de vuelta.</h5>
                 </div>
             );
         } else {
@@ -203,7 +183,7 @@ const Header = () => {
                         { /* Botones superiores de inicio de sesion y registro */}
 
                         <div className='sesion'>
-                        {greetings()}
+                        {greetingsAndLogin()}
                         </div>
 
                         { /* Botones de redes sociales */}
