@@ -11,6 +11,9 @@
     .itemContextualMenu {
         right: 14.7vw;
     }
+    .userAccountMenu {
+        width: 28.2%;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -58,6 +61,9 @@
     }
     .itemContextualMenu {
         right: 15.5vw;
+    }
+    .userAccountMenu {
+        width: 31%;
     }
 }
 
@@ -134,6 +140,11 @@
     .itemContextualMenu {
         right: 16.5vw;
     }
+    .userAccountMenu {
+        width: 42%;
+        right: -1rem;
+        margin-top: 13.2rem;
+    }
 }
 
 @media (max-width: 512px) {
@@ -170,11 +181,15 @@
     .itemContextualMenu {
         right: 19vw;
     }
+    .userAccountMenu {
+        margin-top: 12rem;
+        width: 50%;
+    }
 }
 
 @media (max-width: 420px) {
     .navbar {
-        margin-right: 0.5rem;
+        padding-right: 1rem;
         margin-left: 2.5rem;
     }
     .itemInfoContainer h3 {
@@ -186,4 +201,13 @@
     }
 }
 
-@media (max-width: 360px) {}
+@media (max-width: 360px) {
+    .userAccountMenu {
+        width: 80%;
+        right: -2rem;
+    }
+    .navbar {
+        margin-left: 3rem;
+        margin-right: 2rem;
+    }
+}
