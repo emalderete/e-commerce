@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const [accountSettingsMenuShow, setAccountSettingsMenuShow] = useState(false);
+    let userLogedData = JSON.parse(sessionStorage.getItem('userLoged'));
 
     function showAccountButton(){
         if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
             return(
-                    <button className='userAccountButton' onClick={showAccountMenuHandler}> <i className='fa-solid fa-user'></i> Cuenta</button>
+                    <button className='userAccountButton' onClick={showAccountMenuHandler}> <i className='fa-solid fa-user'></i> {userLogedData.userName}</button>
             )
         }
     };
