@@ -3,7 +3,7 @@ export const registerFormName = (name)=>{
 };
 
 export const registerFormMail = (mail)=>{
-    let regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    let regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     return regexMail.test(mail);
 };
 

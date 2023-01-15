@@ -12,8 +12,8 @@ const ProductPage = () => {
     const [showContextualMenu, setShowContextualMenu] = useState(false);
 
     // Estado para el control del localStorage
-    const [renderLocalStorage, setRenderLocalStorage] = useState(localStorage);
-    var localStorageParsed = JSON.parse(renderLocalStorage.getItem('productsForSale'));
+
+    var localStorageParsed = JSON.parse(localStorage.getItem('productsForSale'));
 
     // Funciones que, en conjunto con los estados, trabajan para controlar las ventanas modal y menus desplegables.
     function overlayNewItemHandler(){
