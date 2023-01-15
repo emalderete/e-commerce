@@ -22,6 +22,17 @@ const Navbar = () => {
         document.location.reload();
     };
 
+    function ifAdmin(){
+        if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
+            let userLoged_parsed = JSON.parse(sessionStorage.getItem('userLoged'));
+            if(userLoged_parsed.userName === 'Admin'){
+                return(
+                    <li><NavLink className='adminProductsButton userAccountMenuButtons' to='/product'> <i className='fas fa-user-cog'></i> Administrar productos</NavLink></li>
+                );
+            }
+        }
+    };
+
     return (
         <div className='navbarContainer'>
             <div className='navbar'>
@@ -38,7 +49,7 @@ const Navbar = () => {
                 </ul>
                 <div className={accountSettingsMenuShow ? 'userAccountMenu' : 'userAccountMenu hideAccountMenu'}>
                     <ul>
-                        <li><NavLink className='adminProductsButton userAccountMenuButtons' to='/product'> <i className='fas fa-user-cog'></i> Administrar productos</NavLink></li>
+                        {ifAdmin()}
                         <li><NavLink className='accountSettingsButton userAccountMenuButtons' to='/settings'> <i className='fa-solid fa-gear'></i> Configuración</NavLink></li>
                         <li><button onClick={logout} type='button' className='accountLogOut userAccountMenuButtons'> <i className='fa-solid fa-arrow-right-from-bracket'></i> Cerrar sesión</button></li>
                     </ul>
