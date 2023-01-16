@@ -106,8 +106,7 @@ const Header = () => {
         }
     };
 
-    // Login:
-    // Lógica:
+    // Login (Lógica):
 
     function session(e) {
         e.preventDefault();
@@ -139,7 +138,7 @@ const Header = () => {
         if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
             return(
                 <div className='userGreetingContainer'>
-                    <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}. Bienvenid@ de vuelta.</h5>
+                    <h5 className='userGreeting'>¡Hola!, {JSON.parse(sessionStorage.getItem('userLoged')).userName}.<br className='textBreak'/> Bienvenid@ de vuelta.</h5>
                 </div>
             );
         } else {
@@ -149,6 +148,24 @@ const Header = () => {
                     <button className='loginButton' type='button' onClick={showLoginModalHandler}>Iniciar Sesion</button>
                     <div style={{margin: '0 2vw', width: '0.2rem', height: '2.5rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
                     <button className='registerButton' type='button' onClick={showRegisterModalHandler}>Registrarse</button>
+                </div>
+            );
+        }
+    }
+
+    function greetingsAndLoginMobile(){
+        if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
+            return(
+                <div className='greetingMobile'>
+                    <h5 className='userGreetingMobile'>¡Buenvenid@ de vuelta, {JSON.parse(sessionStorage.getItem('userLoged')).userName}!</h5>
+                </div>
+            );
+        } else {
+            return(
+                <div className='mobileSesion'>
+                    <button className='loginButton' type='button' onClick={showLoginModalHandlerMobile}>Iniciar Sesion</button>
+                    <div style={{margin: '0 2vw', width: '0.2rem', height: '2rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
+                    <button className='registerButton' type='button' onClick={showRegisterModalHandlerMobile}>Registrarse</button>
                 </div>
             );
         }
@@ -208,15 +225,11 @@ const Header = () => {
                     </div>
                 </div>
 
-                {/* En móvil: menu desplegable desde el boton de barras. Se incluyen los botones de inicio de sesión y registro dentro */}
+                {/* En móvil: menu desplegable móvil. Se incluyen los botones de inicio de sesión y registro dentro */}
 
                 <div className={overlayMobile ? 'overlayMobileContainer' : 'overlayMobileContainer overlayHidden'}>
                     <div className='headerOverlay'>
-                        <div className='mobileSesion'>
-                            <button className='loginButton' type='button' onClick={showLoginModalHandlerMobile}>Iniciar Sesion</button>
-                            <div style={{margin: '0 2vw', width: '0.2rem', height: '2rem', backgroundColor: '#ffffff', borderRadius: '5px'}}></div>
-                            <button className='registerButton' type='button' onClick={showRegisterModalHandlerMobile}>Registrarse</button>
-                        </div>
+                        {greetingsAndLoginMobile()}
                         <button className='btn-close btn-close-white' type='button' onClick={overlayMobileHandler}></button>
                     </div>
                     <form className='mobileSearch'>
