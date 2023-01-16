@@ -20,7 +20,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [isLogged, setIsLogged] = useState(false);
     useEffect(()=>{
-      if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
+      if(JSON.stringify(sessionStorage).indexOf('Admin') !== -1){
         setIsLogged(true);
       } else {
         setIsLogged(false);
