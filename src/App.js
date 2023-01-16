@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import RecoverPassword from './Pages/RecoverPassword';
@@ -10,11 +11,21 @@ import Categories from './Pages/Categories';
 import Cart from './Pages/Cart';
 import Item from './Pages/Item';
 import AccountSettings from './Pages/AccountSettings';
+import Unauthorized from './Pages/Unauthorized';
 import './App.css';
 import './Responsive.css';
+import './Components/ErrorPage.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false);
+    useEffect(()=>{
+      if(JSON.stringify(sessionStorage).indexOf('userLoged') !== -1){
+        setIsLogged(true);
+      } else {
+        setIsLogged(false);
+      }
+    }, []);
   return (
     <div className="App">
       <Router>
@@ -24,7 +35,7 @@ function App() {
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/settings' element={<AccountSettings></AccountSettings>}></Route>
           <Route path='/results' element={<SearchResults></SearchResults>}></Route>
-          <Route path='/product' element={<ProductPage></ProductPage>}></Route>
+          <Route path='/product' element={isLogged ? (<ProductPage></ProductPage>) : (<Unauthorized></Unauthorized>)}></Route>
           <Route path='/favorites' element={<Fav></Fav>}></Route>
           <Route path='/categories' element={<Categories></Categories>}></Route>
           <Route path='/cart' element={<Cart></Cart>}></Route>
