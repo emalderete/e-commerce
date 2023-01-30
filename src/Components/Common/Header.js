@@ -86,7 +86,6 @@ const Header = () => {
                 let newUser_string = JSON.stringify(object);
                 localStorage.setItem('registeredUsers', newUser_string);
             } else {
-                let newUserDataCompiled = new constructorNewRegister(username, mail, password);
                 let getUsersData = JSON.parse(localStorage.getItem('registeredUsers'));
                 getUsersData.push(newUserDataCompiled);
                 let newUser_string = JSON.stringify(getUsersData);
@@ -124,10 +123,10 @@ const Header = () => {
                         sessionStorage.setItem('userLoged', userLoged_string);
                         document.location.reload();
                     }
-                } else {
-                    console.log('El mail o la contraseña son incorrectos');
                 }
             }
+        } else {
+            console.log('El correo o la contraseña no son válidos');
         }
     }
 
