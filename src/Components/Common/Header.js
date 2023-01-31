@@ -18,6 +18,7 @@ const Header = () => {
     const [showPass, setShowPass] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
+    const [loginError, setLoginError] = useState(false);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -122,11 +123,15 @@ const Header = () => {
                         let userLoged_string = JSON.stringify(userLoged);
                         sessionStorage.setItem('userLoged', userLoged_string);
                         document.location.reload();
+                    } else {
+                        setLoginError(true);
                     }
+                } else {
+                    setLoginError(true);
                 }
             }
         } else {
-            console.log('El correo o la contraseña no son válidos');
+            setLoginError(true);
         }
     }
 
@@ -259,6 +264,9 @@ const Header = () => {
                                             <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
                                             <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                         </div>
+                                    </div>
+                                    <div className={loginError ? 'loginErrorContainer' : 'loginErrorContainer displayNone'}>
+                                        <p>Los datos del correo o la contraseña son incorrectos</p>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                                         <button style={{margin: '0 1rem', marginTop: '1rem'}} className='buttonLoginContinue' type='submit' onClick={session}>Continuar</button>

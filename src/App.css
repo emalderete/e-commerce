@@ -291,6 +291,22 @@ body {
     color: #353535;
 }
 
+.loginErrorContainer {
+    text-align: center;
+    border: 1.5px solid #ff4e4e;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background-color: #ffbed0;
+    color: #c90808;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.loginErrorContainer p {
+    padding: 0;
+    margin: 0;
+}
+
 .buttonLoginContinue {
     background-color: #8E0E00;
     border: none;
