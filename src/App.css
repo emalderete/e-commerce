@@ -2,19 +2,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Ubuntu&display=swap');
 
-/* font-family: 'Roboto Slab', serif;
-font-family: 'Ubuntu', sans-serif; */
+/*
+font-family: 'Roboto Slab', serif;
+font-family: 'Ubuntu', sans-serif;
+*/
 
 
 /*--------- Diseños generales ---------*/
 
 body {
-    background-color: #ebebeb!important;
     background: url(./Img/background.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    scrollbar-color: red;
 }
 
 
@@ -28,6 +28,10 @@ body {
 
 .displayNone {
     display: none;
+}
+
+.overflowHidden {
+    overflow: hidden;
 }
 
 .hiddenModal {
@@ -55,11 +59,8 @@ body {
 .headerContainer {
     width: 100%;
     background: #8E0E00;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #1F1C18, #8E0E00);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1F1C18, #8E0E00);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .header {
@@ -224,7 +225,8 @@ body {
 /*-------------- Login --------------*/
 
 .modalLoginContainer {
-    position: absolute;
+    position: fixed;
+    overflow: auto;
     z-index: 11;
     width: 100%;
     height: 100%;
@@ -289,6 +291,17 @@ body {
 .fa-eye-slash {
     font-size: 25px;
     color: #353535;
+}
+
+.inputErrorMessage {
+    margin: 0;
+    padding: 0;
+    text-align: end;
+    position: absolute;
+    margin-top: 4.3rem;
+    font-size: 85%;
+    color: #c90808;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .loginErrorContainer {

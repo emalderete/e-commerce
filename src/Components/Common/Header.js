@@ -19,6 +19,10 @@ const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
     const [loginError, setLoginError] = useState(false);
+    const [registerNameError, setRegisterNameError] = useState(false);
+    const [registerMailError, setRegisterMailError] = useState(false);
+    const [registerPassError, setRegisterPassError] = useState(false);
+    const [registerRePassError, setRegisterRePassError] = useState(false);
 
     function searchInputHandler(){
         inputSearchShow ? setInputSearchShow(false) : setInputSearchShow(true);
@@ -35,10 +39,15 @@ const Header = () => {
 
     function showLoginModalHandler(){
         showLoginModal ? setShowLoginModal(false) : setShowLoginModal(true);
+        setLoginError(false);
     };
 
     function showRegisterModalHandler(){
         showRegisterModal ? setShowRegisterModal(false) : setShowRegisterModal(true);
+        setRegisterNameError(false);
+        setRegisterMailError(false);
+        setRegisterPassError(false);
+        setRegisterRePassError(false);
     };
 
     function showLoginModalHandlerMobile(){
@@ -71,13 +80,13 @@ const Header = () => {
         let password = document.querySelector('.registerInputPassword').value;
         let passwordConfirm = document.querySelector('.registerInputPasswordConfirm').value;
         if(!registerFormName(username)){
-            alert('El nombre de usuario ingresado no es válido, debe ser de al menos 4 carácteres');
+            setRegisterNameError(true);
         } else if(!registerFormMail(mail)){
-            alert('Por favor ingrese un correo válido');
+            setRegisterMailError(true);
         } else if(!registerFormPass(password)){
-            alert('La contraseña debe tener al menos 8 carácteres');
+            setRegisterPassError(true);
         } else if(!registerFormRePass(password, passwordConfirm)){
-            alert('Las contraseñas no coinciden');
+            setRegisterRePassError(true);
         };
         if(registerFormCorrect(username, mail, password, passwordConfirm) && JSON.stringify(localStorage.getItem('registeredUsers')).indexOf(mail) === -1){
             let newUserDataCompiled = new constructorNewRegister(username, mail, password);
@@ -292,14 +301,17 @@ const Header = () => {
                                     <div className='modalInput'>
                                         <label name='nick'>Nombre de usuario</label>
                                         <input type='text' className='registerInputUsername' required />
+                                        <p className={registerNameError ? 'inputErrorMessage' : 'inputErrorMessage displayNone'}>Debe tener 4 carácteres como mínimo.</p>
                                     </div>
                                     <div className='modalInput'>
-                                        <label name='mail'>E-mail</label>
-                                        <input type='email' className='registerInputMail' required />
+                                        <label name='mail' htmlFor='mail'>E-mail</label>
+                                        <input type='email' id='mail' className='registerInputMail' required />
+                                        <p className={registerMailError ? 'inputErrorMessage' : 'inputErrorMessage displayNone'}>Por favor ingrese un correo electrónico válido.</p>
                                     </div>
                                     <div className='modalInput'>
                                         <label name='password'>Contraseña</label>
                                         <input type={showPass ? 'text' : 'password'} className='registerInputPassword' required />
+                                        <p className={registerPassError ? 'inputErrorMessage' : 'inputErrorMessage displayNone'}>La contraseña debe tener al menos 8 carácteres.</p>
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
                                             <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
                                             <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
@@ -308,10 +320,17 @@ const Header = () => {
                                     <div style={{marginTop: '1.5rem'}} className='modalInput'>
                                         <label name='password'>Repetir contraseña</label>
                                         <input type={showPass ? 'text' : 'password'} className='registerInputPasswordConfirm' required />
+                                        <p className={registerRePassError ? 'inputErrorMessage' : 'inputErrorMessage displayNone'}>Las contraseñas no coinciden.</p>
                                         <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '-2.4rem', pointerEvents: 'none'}}>
                                             <button className={showPass ? 'displayNone' : null} style={{backgroundColor: '#00000000', border: 'none', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye-slash'></i></button>
                                             <button className={showPass ? null : 'displayNone'} style={{backgroundColor: '#00000000', border: 'none', marginLeft: '-1px', pointerEvents: 'all'}} onClick={showPassHandler}><i className='fa-solid fa-eye'></i></button>
                                         </div>
+                                    </div>
+                                    <div className='registerErrorContainer'>
+                                        {/* <p>El nombre de usuario debe ser de al menos 4 carácteres.</p>
+                                        <p>Por favor ingrese un correo electrónico válido.</p>
+                                        <p>La contraseña debe tener al menos 8 carácteres.</p>
+                                        <p>Las contraseñas no coinciden.</p> */}
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                                         <button className='buttonLoginContinue' type='submit' onClick={RegisterForm}>Continuar</button>
